@@ -23,6 +23,7 @@ def getImgUrl(url,params=None):
     for article in soup.select('article.photo-item'):#爬取一些新闻信息
         for img in article.select('img'):
             imgre = re.findall(r'(.*)\?', img['src'])
+            print(imgre)
             arr.append(imgre[0])
     if(len(arr)):
         return arr
@@ -35,10 +36,9 @@ page = 1
 while(1):
     url = "https://www.pexels.com/search/design/?page="+str(page)
     imgurl = getImgUrl(url)
-    print(imgurl)
     if(imgurl==False):
         break
     else:
         allimgurl+=imgurl
     page = page+1
-print(allimgurl)
+# print(allimgurl)
