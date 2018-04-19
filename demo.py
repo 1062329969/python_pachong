@@ -2,7 +2,7 @@ import requests
 import re
 import pymysql
 from bs4 import BeautifulSoup
-
+import os
 
 config = {
     'host': '127.0.0.1',
@@ -34,7 +34,16 @@ def getImgUrl(url,params=None):
 allimgurl = []
 page = 1
 while(1):
-    url = "https://www.pexels.com/search/design/?page="+str(page)
+    url = "https://www.pexels.com/search/writing/?page="+str(page)
+
+
+    # res = requests.get(url)
+    # res.encoding = 'utf-8'
+    # soup = BeautifulSoup(res.text, 'html.parser')
+    # if(page==10):
+    #     break;
+
+
     imgurl = getImgUrl(url)
     if(imgurl==False):
         break
@@ -42,3 +51,5 @@ while(1):
         allimgurl+=imgurl
     page = page+1
 # print(allimgurl)
+# print(111);
+# os.system("python demo.py")
